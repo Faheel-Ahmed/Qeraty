@@ -15,19 +15,19 @@ async function bootstrap() {
       'http://localhost:8081', // react-native
     ],
   });
-  // const config = new DocumentBuilder()
-  //   .setTitle('Qeraty')
-  //   .setDescription('Qeraty API description')
-  //   .setVersion('1.0')
-  //   .addTag('Books-App')
-  //   .build();
-  // const document = SwaggerModule.createDocument(app, config);
-  // try{
+  const config = new DocumentBuilder()
+    .setTitle('Qeraty')
+    .setDescription('Qeraty API description')
+    .setVersion('1.0')
+    .addTag('Books-App')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  try{
 
-  //   SwaggerModule.setup('swagger-ui', app, document);
-  // }catch(e){
-  //   console.log("here",e)
-  // }
+    SwaggerModule.setup('swagger-ui', app, document);
+  }catch(e){
+    console.log("here",e)
+  }
   await app.listen(port);
   Logger.log(`Server running on http://localhost:${port}`, 'Bootstrap');
 

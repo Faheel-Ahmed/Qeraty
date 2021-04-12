@@ -23,7 +23,7 @@ import { ChangePasswordDto } from './dto/change_password.dto';
 import { UserFavDTO } from './userFav.dto';
 import { User } from './users.decorator';
 import { VerifyEmailDTO } from './dto/verify_email.dto';
-import {ApiOkResponse} from '@nestjs/swagger';
+import {ApiBody, ApiCreatedResponse, ApiOkResponse, ApiOperation} from '@nestjs/swagger';
 
 @Controller('api/v1')
 export class UserController {
@@ -32,7 +32,9 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post('auth/register')
-  @ApiOkResponse({type:UserDTO, isArray:true})
+  @ApiCreatedResponse({ description: 'User Registration' })
+  // @ApiOkResponse({type:UserDTO, isArray:true})
+  @ApiBody({type:UserDTO})
   @UsePipes(new ValidationPipe())
   register(@Body() data: UserDTO,@Response() res) {
     return this.userService.register(data,res);

@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import {ApiProperty} from '@nestjs/swagger';
+import {ApiHideProperty, ApiProperty} from '@nestjs/swagger';
 
 export class UserDTO {
   @IsNotEmpty()
@@ -30,7 +30,7 @@ export class UserDTO {
   @ApiProperty()
   role_id:Number
 
-
+  @ApiHideProperty()
   @ApiProperty()
   emailCode:string
 }
